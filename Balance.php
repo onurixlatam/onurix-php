@@ -21,7 +21,7 @@ class ApiController extends AbstractController
         $client = new Client([
             'base_uri' => 'https://www.onurix.com/api/v1/'
         ]);
-        $request = new Request('GET','balance?key=582876138efc20d00c3bd32c046edff0cdd3369061d4c5123747d&client=2412');
+        $request = new Request('GET','balance?key=AQUI_SU_KEY&client=AQUI_SU_CLIENT');
         $response = $client->sendAsync($request)->wait();
         //dump($response->getBody()->getContents());exit;
         return $response->getBody()->getContents();
