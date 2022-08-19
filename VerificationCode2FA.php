@@ -1,44 +1,32 @@
 <?php
+// Ejecutar: composer require guzzlehttp/guzzle:*
+require'vendor/autoload.php';
 
-//Ejecutar composer require guzzlehttp/guzzle
+$headers=array(
+'Content-Type'=>'application/x-www-form-urlencoded',
+'Accept'=>'application/json',
+);
 
-namespace App\Controller;
+$client= new \GuzzleHttp\Client();
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Annotation\Route;
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
+// Define la matriz del cuerpo de la solicitud.
+$request_body = array(
+     "client"=>"AQUI_SU_CLIENT",
+     "key"=>"AQUI_SU_KEY",
+     "phone"=>"AQUI_EL_NUMERO_DE_CELULAR",
+     "app-name"=>"AQUI_NOMBRE_APP",
+     "code"=>"AQUI_CODIGO",
+     "country-code"=>"CO");
 
-
-class ApiController extends AbstractController
-{
-    /**
-     * @Route("/api", name="app_api")
-     */
-    public function verificationCode2FA()
-    {
-        $headers = [
-            'Content-Type' => 'application/x-www-form-urlencoded'
-          ];
-        
-        $parameters = [
-            'form_params' => [
-                'client' => 'AQUI_SU_CLIENT',
-                'key' => 'AQUI_SU_KEY',
-                'phone' => 'AQUI_EL_NUMERO_DE_CELULAR',
-                'app-name' => 'AQUI_NOMBRE_APP',
-                'code' => 'AQUI_CODIGO',
-                'country-code' => 'CO'
-                ]
-        ];
-
-        $client = new Client([
-            'base_uri' => 'https://www.onurix.com/api/v1/'
-        ]);
-        $request = new Request('POST','2fa/verification-code',['body' => $headers]);
-        $response = $client->sendAsync($request,$parameters)->wait();
-        //dump($response->getBody()->getContents());exit;
-        return $response->getBody()->getContents();
-    }
+try{
+$response=$client->request('POST','https://www.onurix.com/api/v1/2fa/verification-code',array(
+'headers'=>$headers,
+'form_params'=>$request_body,
+)
+);
+print_r($response->getBody()->getContents());
+}
+catch(\GuzzleHttp\Exception\BadResponseException $e){
+// Manejar excepciones o errores de API
+print_r($e->getMessage());
 }

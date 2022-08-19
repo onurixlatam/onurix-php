@@ -1,43 +1,31 @@
 <?php
+// Ejecutar: composer require guzzlehttp/guzzle:*
+require'vendor/autoload.php';
 
-//Ejecutar composer require guzzlehttp/guzzle
+$headers=array(
+'Content-Type'=>'application/x-www-form-urlencoded',
+'Accept'=>'application/json',
+);
 
-namespace App\Controller;
+$client= new \GuzzleHttp\Client();
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Annotation\Route;
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
+// Define la matriz del cuerpo de la solicitud.
+$request_body = array(
+     "client"=>"AQUI_SU_CLIENT",
+     "key"=>"AQUI_SU_KEY",
+     "name-url"=>"AQUI_NOMBE_DE_URL",
+     "since"=>"Fecha inicial YYYY-MM-DD",
+     "until"=>"Fecha final YYYY-MM-DD");
 
-
-class ApiController extends AbstractController
-{
-    /**
-     * @Route("/api", name="app_api")
-     */
-    public function statistics()
-    {
-        $headers = [
-            'Content-Type' => 'application/x-www-form-urlencoded'
-          ];
-        
-        $parameters = [
-            'form_params' => [
-                'client' => 'AQUI_SU_CLIENT',
-                'key' => 'AQUI_SU_KEY',
-                'name-url' => 'AQUI_NOMBE_DE_URL',
-                'since' => 'Fecha inicial YYYY-MM-DD',
-                'until' => 'Fecha final YYYY-MM-DD'
-                ]
-        ];
-
-        $client = new Client([
-            'base_uri' => 'https://www.onurix.com/api/v1/'
-        ]);
-        $request = new Request('POST','url/short-statistic',['body' => $headers]);
-        $response = $client->sendAsync($request,$parameters)->wait();
-        //dump($response->getBody()->getContents());exit;
-        return $response->getBody()->getContents();
-    }
+try{
+$response=$client->request('POST','https://www.onurix.com/api/v1/url/short-statistic',array(
+'headers'=>$headers,
+'form_params'=>$request_body,
+)
+);
+print_r($response->getBody()->getContents());
+}
+catch(\GuzzleHttp\Exception\BadResponseException $e){
+// Manejar excepciones o errores de API
+print_r($e->getMessage());
 }
