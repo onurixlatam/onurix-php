@@ -1,41 +1,27 @@
 <?php
-//Ejecutar composer require guzzlehttp/guzzle
+// Ejecutar: composer require guzzlehttp/guzzle:*
+require'vendor/autoload.php';
 
-namespace App\Controller;
+$headers=array(
+'Content-Type'=>'application/x-www-form-urlencoded',
+'Accept'=>'application/json',
+);
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Annotation\Route;
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
+$client= new \GuzzleHttp\Client();
 
+// Define la matriz del cuerpo de la solicitud.
+$request_body=array(
+     "client"=>"AQUI_SU_CLIENT",
+     "key"=>"AQUI_SU_KEY",
+     "phone"=>"AQUI_EL_NUMERO_DE_CELULAR",
+     "name"=>"AQUI_NOMBRE_CONTACTO");
 
-class ApiController extends AbstractController
-{
-    /**
-     * @Route("/api", name="app_api")
-     */
-    public function blockPhone()
-    {
-        $headers = [
-            'Content-Type' => 'application/x-www-form-urlencoded'
-          ];
-        
-        $parameters = [
-            'form_params' => [
-                'client' => 'AQUI_SU_CLIENT',
-                'key' => 'AQUI_SU_KEY',
-                'phone' => 'AQUI_EL_NUMERO_DE_CELULAR',
-                'name' => 'AQUI_NOMBRE_CONTACTO'
-                ]
-        ];
-
-        $client = new Client([
-            'base_uri' => 'https://www.onurix.com/api/v1/'
-        ]);
-        $request = new Request('POST','block-phone',['body' => $headers]);
-        $response = $client->sendAsync($request,$parameters)->wait();
-        //dump($response->getBody()->getContents());exit;
-        return $response->getBody()->getContents();
-    }
+try{
+$response=$client->request('POST','https://www.onurix.com/api/v1/block-phone',
+array('headers'=>$headers,'form_params'=>$request_body,));
+print_r($response->getBody()->getContents());
+}
+catch(\GuzzleHttp\Exception\BadResponseException $e){
+// Manejar excepciones o errores de API
+print_r($e->getMessage());
 }
