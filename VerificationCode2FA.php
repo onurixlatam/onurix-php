@@ -16,7 +16,7 @@ $request_body = array(
      "phone"=>"AQUI_EL_NUMERO_DE_CELULAR",
      "app-name"=>"AQUI_NOMBRE_APP",
      "code"=>"AQUI_CODIGO",
-     "country-code"=>"CO");
+     );
 
 try{
 $response=$client->request('POST','https://www.onurix.com/api/v1/2fa/verification-code',array(
