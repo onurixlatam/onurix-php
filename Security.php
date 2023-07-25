@@ -15,7 +15,7 @@ $request_body=array(
      "key"=>"AQUI_SU_KEY",
      "phone"=>"AQUI_EL_NUMERO_DE_CELULAR",
      "name"=>"AQUI_NOMBRE_CONTACTO",
-     "channel"=> "AQUI_CHANNEL_A_BLOQUEAR_"
+     "channel"=> "AQUI_CHANNEL_A_BLOQUEAR" // CANALES DISPONIBLES "SMS","CALL","WA"
 );
 
 try{
