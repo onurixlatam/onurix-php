@@ -15,6 +15,11 @@ $request_body = array(
      "key"=>"AQUI_SU_KEY",
      "name"=>"AQUI_NOMBE_DE_URL",
      "url-long"=>"AQUI_URL_LARGA",
+     "alias"=>"OPCIONAL_AQUI_ALIAS",
+     "is-premium" => "OPCIONAL_AQUI_TRUE_OR_FALSE_DEFAULT_FALSE",
+     "group-name" => "OPCIONAL_AQUI_NOMBRE_DE_GRUPO",
+     "domain-name" => "OPCIONAL_AQUI_NOMBRE_DOMINIO_REGISTRADO",
+     "expiration-time-statistics" => "OPCIONAL_AQUI_TIEMPO_ALMACENAMIENTO-ESTADITICAS"
 );
 
 try{

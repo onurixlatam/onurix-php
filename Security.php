@@ -14,7 +14,9 @@ $request_body=array(
      "client"=>"AQUI_SU_CLIENT",
      "key"=>"AQUI_SU_KEY",
      "phone"=>"AQUI_EL_NUMERO_DE_CELULAR",
-     "name"=>"AQUI_NOMBRE_CONTACTO");
+     "name"=>"AQUI_NOMBRE_CONTACTO",
+     "channel"=> "AQUI_CHANNEL_A_BLOQUEAR" // CANALES DISPONIBLES "SMS","CALL","WA"
+);
 
 try{
 $response=$client->request('POST','https://www.onurix.com/api/v1/block-phone',

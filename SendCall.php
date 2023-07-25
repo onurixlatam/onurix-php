@@ -19,7 +19,7 @@ $request_body = array(
      "retries"=>"AQUI_NUMERO_DE_INTENTOS",
      "leave-voicemail"=>"false",
      "audio-code"=>"AQUI_ID_AUDIO",
-     "country-code"=>"CO");
+     ); 
 
 try{
 $response=$client->request('POST','https://www.onurix.com/api/v1/call/send',array(

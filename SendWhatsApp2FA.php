@@ -15,7 +15,7 @@ $request_body = array(
      "key"=>"AQUI_SU_KEY",
      "phone"=>"AQUI_EL_NUMERO_DE_CELULAR",
      "app-name"=>"AQUI_NOMBRE_APP",
-     "country-code"=>"CO");
+     );
 
 try{
 $response=$client->request('POST','https://www.onurix.com/api/v1/2fa/send-whatsapp',array(
