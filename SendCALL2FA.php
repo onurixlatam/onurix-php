@@ -20,7 +20,7 @@ $request_body = array(
      );
 
 try{
-$response=$client->request('POST','https://www.onurix.com/api/v1/call/2fa/send-call',array(
+$response=$client->request('POST','https://www.onurix.com/api/v1/call/2fa/send',array(
 'headers'=>$headers,
 'form_params'=>$request_body,
 )
