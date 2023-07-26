@@ -11,10 +11,10 @@ $client= new \GuzzleHttp\Client();
 $request_body=array(
     "client"=>"AQUI_SU_CLIENT",
     "key"=>"AQUI_SU_KEY",
-    "name"=>"OPCIONAL_AQUI_NOMBRE_CONTACTO",
-    "lastname" => "OPCIONAL_AQUI_APELLIDO_CONTACTO",
-    "email" => "OPCIONAL_AQUI_EMAIL_CONTACTO",
-    "phone" => "OPCIONAL_AQUI_TELEFONO_CONTACTO"
+    "name"=>"AQUI_NOMBRE_CONTACTO",
+    "lastname" => "AQUI_APELLIDO_CONTACTO",
+    "email" => "AQUI_EMAIL_CONTACTO",
+    "phone" => "AQUI_TELEFONO_CONTACTO"
 );
 try{
     $response=$client->request('POST','https://www.onurix.com/api/v1/contacts/create',
