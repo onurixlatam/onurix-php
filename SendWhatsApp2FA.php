@@ -18,7 +18,7 @@ $request_body = array(
      );
 
 try{
-$response=$client->request('POST','https://www.onurix.com/api/v1/2fa/send-whatsapp',array(
+$response=$client->request('POST','https://www.onurix.com/api/v1/whatsapp/2fa/send',array(
 'headers'=>$headers,
 'form_params'=>$request_body,
 )
