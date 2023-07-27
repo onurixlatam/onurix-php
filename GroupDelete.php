@@ -9,7 +9,7 @@ $headers=array(
 
 $client= new \GuzzleHttp\Client();
 try{
-    $response=$client->request('DELETE','localhost:7474/api/v1/group/delete?key=AQUI_SU_KEY&client=AQUI_SU_ID&id=AQUI_ID_GROUP',
+    $response=$client->request('DELETE','https://www.onurix.com/api/v1/group/delete?key=AQUI_SU_KEY&client=AQUI_SU_ID&id=AQUI_ID_GROUP',
     array('headers'=>$headers));
     print_r($response->getBody()->getContents());
     }
