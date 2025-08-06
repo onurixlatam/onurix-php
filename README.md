@@ -1,6 +1,8 @@
 # Ejemplos de Cliente API de Onurix en PHP
 
+[![PHP](https://img.shields.io/badge/PHP-7.0+-777BB4?style=flat&logo=php&logoColor=white)](https://php.net)
 [![PHP](https://img.shields.io/badge/PHP-8.0+-777BB4?style=flat&logo=php&logoColor=white)](https://php.net)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
 
 ![Onurix Logo](https://cdn.onurix.com/web/assets/img/logo50.png)
@@ -9,19 +11,30 @@ Este repositorio contiene ejemplos de código en PHP para interactuar con la **A
 
 ## 📋 Tabla de Contenido
 
-- [Prerrequisitos](#-prerrequisitos)
-- [Estructura del Repositorio](#-estructura-del-repositorio)
-- [Uso](#-uso)
-- [Configuración de Parámetros](#️-configuración-de-parámetros)
-- [Ejemplo de Valores para los Parámetros de la Petición sms/SendSMS.php](#ejemplo-de-valores-para-los-parámetros-de-la-petición-smssendsmsphp)
-- [Documentación Completa de la API](#-documentación-completa-de-la-api)
-- [Licencia](#-licencia)
-- [Soporte](#-soporte)
+- [Ejemplos de Cliente API de Onurix en PHP](#ejemplos-de-cliente-api-de-onurix-en-php)
+  - [📋 Tabla de Contenido](#-tabla-de-contenido)
+  - [⚙️ Prerrequisitos](#️-prerrequisitos)
+  - [📂 Estructura del Repositorio](#-estructura-del-repositorio)
+    - [Calls](#calls)
+    - [General](#general)
+    - [Groups and Contacts](#groups-and-contacts)
+    - [SMS](#sms)
+    - [URL](#url)
+    - [WhatsApp](#whatsapp)
+  - [📖 Uso](#-uso)
+  - [⚙️ Configuración de Parámetros](#️-configuración-de-parámetros)
+    - [Credenciales de Autenticación (Obligatorias)](#credenciales-de-autenticación-obligatorias)
+    - [Parámetros Comunes](#parámetros-comunes)
+    - [Parámetros Específicos](#parámetros-específicos)
+    - [Ejemplo de Petición para `sms/SendSMS.php`](#ejemplo-de-petición-para-smssendsmsphp)
+  - [📚 Documentación Completa de la API](#-documentación-completa-de-la-api)
+  - [📄 Licencia](#-licencia)
+  - [📞 Soporte](#-soporte)
 
 ## ⚙️ Prerrequisitos
 
 Antes de empezar, asegúrate de tener instalado lo siguiente:
-- **PHP 8.0 o superior**
+- **PHP 7.0 y 8.0 o superior**
 - **Composer** (para gestionar las dependencias)
 
 ## 📂 Estructura del Repositorio
@@ -31,50 +44,50 @@ Los ejemplos de código están organizados en carpetas que corresponden a las di
 A continuación, se detalla cada endpoint de ejemplo y el método HTTP que utiliza:
 
 ### Calls
-| Archivo | Método | Descripción |
-| :--- | :--- | :--- |
-| `SendCall.php` | `POST` | Genera una llamada con un mensaje de voz. |
+| Archivo           | Método | Descripción                                                             |
+| :---------------- | :----- | :---------------------------------------------------------------------- |
+| `SendCall.php`    | `POST` | Genera una llamada con un mensaje de voz.                               |
 | `SendCALL2FA.php` | `POST` | Genera y entrega un código de verificación 2FA a través de una llamada. |
 
 ### General
-| Archivo | Método | Descripción |
-| :--- | :--- | :--- |
-| `Balance.php` | `GET` | Consulta el saldo de créditos de la cuenta. |
-| `Security.php` | `POST` | Bloquea un número de teléfono para no recibir comunicaciones. |
-| `VerificationCode2FA.php` | `POST` | Realiza la verificación de un código 2FA. |
-| `VerificationMessage.php` | `GET` | Verifica el estado de un envío de SMS o llamada. |
+| Archivo                   | Método | Descripción                                                   |
+| :------------------------ | :----- | :------------------------------------------------------------ |
+| `Balance.php`             | `GET`  | Consulta el saldo de créditos de la cuenta.                   |
+| `Security.php`            | `POST` | Bloquea un número de teléfono para no recibir comunicaciones. |
+| `VerificationCode2FA.php` | `POST` | Realiza la verificación de un código 2FA.                     |
+| `VerificationMessage.php` | `GET`  | Verifica el estado de un envío de SMS o llamada.              |
 
 ### Groups and Contacts
-| Archivo | Método | Descripción |
-| :--- | :--- | :--- |
-| `AssociateContactToGroup.php` | `POST` | Asocia un contacto a un grupo. |
-| `ContactCreate.php` | `POST` | Crea un nuevo contacto. |
-| `ContactDelete.php` | `POST` | Elimina un contacto. |
-| `ContactGroupList.php` | `GET` | Lista los contactos de un grupo. |
-| `ContactUpdate.php` | `POST` | Actualiza la información de un contacto. |
-| `DissasociateContactToGroup.php`| `POST` | Desasocia un contacto de un grupo. |
-| `GroupCreate.php` | `POST` | Crea un nuevo grupo de contactos. |
-| `GroupDelete.php` | `POST` | Elimina un grupo de contactos. |
-| `GroupList.php` | `GET` | Lista todos los grupos de la cuenta. |
-| `GroupUpdate.php` | `POST` | Actualiza el nombre de un grupo. |
+| Archivo                          | Método | Descripción                              |
+| :------------------------------- | :----- | :--------------------------------------- |
+| `AssociateContactToGroup.php`    | `POST` | Asocia un contacto a un grupo.           |
+| `ContactCreate.php`              | `POST` | Crea un nuevo contacto.                  |
+| `ContactDelete.php`              | `POST` | Elimina un contacto.                     |
+| `ContactGroupList.php`           | `GET`  | Lista los contactos de un grupo.         |
+| `ContactUpdate.php`              | `POST` | Actualiza la información de un contacto. |
+| `DissasociateContactToGroup.php` | `POST` | Desasocia un contacto de un grupo.       |
+| `GroupCreate.php`                | `POST` | Crea un nuevo grupo de contactos.        |
+| `GroupDelete.php`                | `POST` | Elimina un grupo de contactos.           |
+| `GroupList.php`                  | `GET`  | Lista todos los grupos de la cuenta.     |
+| `GroupUpdate.php`                | `POST` | Actualiza el nombre de un grupo.         |
 
 ### SMS
-| Archivo | Método | Descripción |
-| :--- | :--- | :--- |
-| `SendSMS.php` | `POST` | Envía un mensaje de texto (SMS). |
+| Archivo          | Método | Descripción                                                        |
+| :--------------- | :----- | :----------------------------------------------------------------- |
+| `SendSMS.php`    | `POST` | Envía un mensaje de texto (SMS).                                   |
 | `SendSMS2FA.php` | `POST` | Envía un mensaje de texto (SMS) con un código de verificación 2FA. |
 
 ### URL
-| Archivo | Método | Descripción |
-| :--- | :--- | :--- |
-| `Statistics.php` | `GET` | Obtiene las estadísticas de una URL corta. |
-| `URLShortener.php` | `POST` | Crea una URL corta. |
+| Archivo            | Método | Descripción                                |
+| :----------------- | :----- | :----------------------------------------- |
+| `Statistics.php`   | `GET`  | Obtiene las estadísticas de una URL corta. |
+| `URLShortener.php` | `POST` | Crea una URL corta.                        |
 
 ### WhatsApp
-| Archivo | Método | Descripción |
-| :--- | :--- | :--- |
-| `SendWhatsApp2FA.php` | `POST (JSON)` | Envía un mensaje de WhatsApp con un código de verificación 2FA. |
-| `WhatsAppGeneralSend.php` | `POST (JSON)` | Envía un mensaje de WhatsApp usando una plantilla. |
+| Archivo                   | Método        | Descripción                                                     |
+| :------------------------ | :------------ | :-------------------------------------------------------------- |
+| `SendWhatsApp2FA.php`     | `POST (JSON)` | Envía un mensaje de WhatsApp con un código de verificación 2FA. |
+| `WhatsAppGeneralSend.php` | `POST (JSON)` | Envía un mensaje de WhatsApp usando una plantilla.              |
 
 ## 📖 Uso
 
@@ -103,48 +116,73 @@ Para usar los ejemplos, necesitas reemplazar los valores de los placeholders (`A
 
 ### Credenciales de Autenticación (Obligatorias)
 
-| Parámetro | Descripción |
-| :--- | :--- |
-| `client` | Tu ID de Cliente. Lo encuentras en tu panel de Onurix en `Seguridad API`. |
-| `key` | Tu Llave de API. La encuentras en tu panel de Onurix en `Seguridad API`. |
+| Parámetro | Descripción                                                               |
+| :-------- | :------------------------------------------------------------------------ |
+| `client`  | Tu ID de Cliente. Lo encuentras en tu panel de Onurix en `Seguridad API`. |
+| `key`     | Tu Llave de API. La encuentras en tu panel de Onurix en `Seguridad API`.  |
 
 ### Parámetros Comunes
 
-| Parámetro | Descripción | Ejemplo |
-| :--- | :--- | :--- |
-| `phone` | Número de teléfono de destino. Para múltiples números, sepáralos por comas. | `573001234567` o `573001234567,573001234568` |
-| `name` | Nombre para un contacto o grupo. | `Mi Grupo` |
-| `lastname` | Apellido para un contacto. | `Pérez` |
-| `email` | Correo electrónico de un contacto. | `ejemplo@email.com` |
-| `id` | ID de un recurso (mensaje, contacto, grupo). | `12345` |
-| `group-id` | ID de un grupo. | `6789` |
-| `groups` | IDs de grupos separados por comas. | `1,2,3` |
-| `app-name` | Nombre de la aplicación 2FA creada en Onurix. | `MiApp` |
+| Parámetro  | Descripción                                                                 | Ejemplo                                      |
+| :--------- | :-------------------------------------------------------------------------- | :------------------------------------------- |
+| `phone`    | Número de teléfono de destino. Para múltiples números, sepáralos por comas. | `573001234567` o `573001234567,573001234568` |
+| `name`     | Nombre para un contacto o grupo.                                            | `Mi Grupo`                                   |
+| `lastname` | Apellido para un contacto.                                                  | `Pérez`                                      |
+| `email`    | Correo electrónico de un contacto.                                          | `ejemplo@email.com`                          |
+| `id`       | ID de un recurso (mensaje, contacto, grupo).                                | `12345`                                      |
+| `group-id` | ID de un grupo.                                                             | `6789`                                       |
+| `groups`   | IDs de grupos separados por comas.                                          | `1,2,3`                                      |
+| `app-name` | Nombre de la aplicación 2FA creada en Onurix.                               | `MiApp`                                      |
 
 ### Parámetros Específicos
 
-| Servicio | Parámetro | Descripción |
-| :--- | :--- | :--- |
-| **SMS** | `sms` | Contenido del mensaje de texto a enviar. |
-| **Llamadas** | `message` | Mensaje que se reproducirá en la llamada. |
-| **Llamadas** | `voice` | Voz a usar en la llamada (ej. `Mariana`, `Penelope`). |
-| **Llamadas** | `audio-code` | ID de un audio previamente cargado en la plataforma. |
-| **URL** | `url-long` | La URL original que deseas acortar. |
-| **URL** | `alias` | (Opcional) Alias personalizado para la URL corta. |
-| **WhatsApp** | `templateId` | ID de la plantilla de WhatsApp aprobada por Meta. |
-| **WhatsApp** | `data` | Un array de PHP que se convertirá a JSON con los valores para la plantilla. |
+| Servicio     | Parámetro    | Descripción                                                                 |
+| :----------- | :----------- | :-------------------------------------------------------------------------- |
+| **SMS**      | `sms`        | Contenido del mensaje de texto a enviar.                                    |
+| **Llamadas** | `message`    | Mensaje que se reproducirá en la llamada.                                   |
+| **Llamadas** | `voice`      | Voz a usar en la llamada (ej. `Mariana`, `Penelope`).                       |
+| **Llamadas** | `audio-code` | ID de un audio previamente cargado en la plataforma.                        |
+| **URL**      | `url-long`   | La URL original que deseas acortar.                                         |
+| **URL**      | `alias`      | (Opcional) Alias personalizado para la URL corta.                           |
+| **WhatsApp** | `templateId` | ID de la plantilla de WhatsApp aprobada por Meta.                           |
+| **WhatsApp** | `data`       | Un array de PHP que se convertirá a JSON con los valores para la plantilla. |
 
-### Ejemplo de Valores para los Parámetros de la Petición `sms/SendSMS.php`
+### Ejemplo de Petición para `sms/SendSMS.php`
 
-A continuación, se presenta una tabla con los parámetros que se utilizan en la petición de envío de SMS, incluyendo una breve descripción y un valor de ejemplo para cada uno:
+```php
+<?php
+// Ejecutar: composer require guzzlehttp/guzzle:*
+require 'vendor/autoload.php';
 
-| Variable | Descripción | Valor de Ejemplo |
-| :--- | :--- | :--- |
-| `client` | Su ID de Cliente, obtenido del panel de Onurix en `Seguridad API`. | `12345` |
-| `key` | Su Llave de API, obtenida del panel de Onurix en `Seguridad API`. | `abcdef1234567890abcdef1234567890` |
-| `phone` | Número de teléfono de destino. | `573001234567` |
-| `sms` | Contenido del mensaje de texto a enviar. | `Este es un mensaje de prueba enviado desde Onurix.com` |
-| `groups` | ID de grupos a los que se enviará el SMS (opcional). | `1,2,3` |
+$headers=array(
+'Content-Type'=>'application/x-www-form-urlencoded',
+'Accept'=>'application/json',
+);
+
+$client= new \GuzzleHttp\Client();
+
+// Define la matriz del cuerpo de la solicitud.
+$request_body =array(
+     "client"=>"12345",
+     "key"=>"*********************",
+     "phone"=>"573001234567",
+     "sms"=>"Este es un mensaje de prueba enviado desde Onurix.com",
+     "groups"=>"1,2,3"
+    );
+
+try{
+$response=$client->request('POST','https://www.onurix.com/api/v1/sms/send',array(
+'headers'=>$headers,
+'form_params'=>$request_body,
+)
+);
+print_r($response->getBody()->getContents());
+}
+catch(\GuzzleHttp\Exception\BadResponseException $e){
+// Manejar excepciones o errores de API
+print_r($e->getMessage());
+}
+```
 
 **Ejemplo de `$data` para WhatsApp:**
 
