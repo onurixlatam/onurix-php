@@ -27,12 +27,34 @@ Antes de empezar, asegúrate de tener instalado lo siguiente:
 
 Los ejemplos de código están organizados en carpetas que corresponden a las diferentes categorías de la API de Onurix. Esta estructura te permite encontrar fácilmente el ejemplo que necesitas.
 
-- **/calls**: Ejemplos para enviar llamadas de voz y 2FA.
-- **/general**: Ejemplos para consultar balance, verificar estados y gestionar la seguridad.
-- **/groups_and_contacts**: Ejemplos para la administración de contactos y grupos.
-- **/sms**: Ejemplos para el envío de SMS y 2FA.
-- **/url**: Ejemplos para acortar y analizar URLs.
-- **/whatsapp**: Ejemplos para enviar mensajes de WhatsApp y 2FA.
+- **/calls**:
+  - `SendCall.php`: Genera una llamada con un mensaje de voz.
+  - `SendCALL2FA.php`: Genera y entrega un código de verificación 2FA a través de una llamada.
+- **/general**:
+  - `Balance.php`: Consulta el saldo de créditos de la cuenta.
+  - `Security.php`: Bloquea un número de teléfono para no recibir comunicaciones.
+  - `VerificationCode2FA.php`: Realiza la verificación de un código 2FA.
+  - `VerificationMessage.php`: Verifica el estado de un envío de SMS o llamada.
+- **/groups_and_contacts**:
+  - `AssociateContactToGroup.php`: Asocia un contacto a un grupo.
+  - `ContactCreate.php`: Crea un nuevo contacto.
+  - `ContactDelete.php`: Elimina un contacto.
+  - `ContactGroupList.php`: Lista los contactos de un grupo.
+  - `ContactUpdate.php`: Actualiza la información de un contacto.
+  - `DissasociateContactToGroup.php`: Desasocia un contacto de un grupo.
+  - `GroupCreate.php`: Crea un nuevo grupo de contactos.
+  - `GroupDelete.php`: Elimina un grupo de contactos.
+  - `GroupList.php`: Lista todos los grupos de la cuenta.
+  - `GroupUpdate.php`: Actualiza el nombre de un grupo.
+- **/sms**:
+  - `SendSMS.php`: Envía un mensaje de texto (SMS).
+  - `SendSMS2FA.php`: Envía un mensaje de texto (SMS) con un código de verificación 2FA.
+- **/url**:
+  - `Statistics.php`: Obtiene las estadísticas de una URL corta.
+  - `URLShortener.php`: Crea una URL corta.
+- **/whatsapp**:
+  - `SendWhatsApp2FA.php`: Envía un mensaje de WhatsApp con un código de verificación 2FA.
+  - `WhatsAppGeneralSend.php`: Envía un mensaje de WhatsApp usando una plantilla.
 
 ## 📖 Uso
 
