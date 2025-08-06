@@ -23,10 +23,10 @@ Este repositorio contiene ejemplos de código en PHP para interactuar con la **A
     - [WhatsApp](#whatsapp)
   - [📖 Uso](#-uso)
   - [⚙️ Configuración de Parámetros](#️-configuración-de-parámetros)
-    - [Credenciales de Autenticación (Obligatorias)](#credenciales-de-autenticación-obligatorias)
+    - [Credenciales de Autenticación (Obligatorias) `POST o GET`](#credenciales-de-autenticación-obligatorias-post-o-get)
     - [Parámetros Comunes](#parámetros-comunes)
     - [Parámetros Específicos](#parámetros-específicos)
-    - [Ejemplo de Petición para `sms/SendSMS.php`](#ejemplo-de-petición-para-smssendsmsphp)
+    - [Ejemplo de parámetros para `sms/SendSMS.php`](#ejemplo-de-parámetros-para-smssendsmsphp)
   - [📚 Documentación Completa de la API](#-documentación-completa-de-la-api)
   - [📄 Licencia](#-licencia)
   - [📞 Soporte](#-soporte)
@@ -114,7 +114,7 @@ A continuación, se detalla cada endpoint de ejemplo y el método HTTP que utili
 
 Para usar los ejemplos, necesitas reemplazar los valores de los placeholders (`AQUI_...`) con tus datos reales. A continuación, se detallan los parámetros que encontrarás en los scripts:
 
-### Credenciales de Autenticación (Obligatorias)
+### Credenciales de Autenticación (Obligatorias) `POST o GET`
 
 | Parámetro | Descripción                                                               |
 | :-------- | :------------------------------------------------------------------------ |
@@ -147,20 +147,9 @@ Para usar los ejemplos, necesitas reemplazar los valores de los placeholders (`A
 | **WhatsApp** | `templateId` | ID de la plantilla de WhatsApp aprobada por Meta.                           |
 | **WhatsApp** | `data`       | Un array de PHP que se convertirá a JSON con los valores para la plantilla. |
 
-### Ejemplo de Petición para `sms/SendSMS.php`
+### Ejemplo de parámetros para `sms/SendSMS.php`
 
 ```php
-<?php
-// Ejecutar: composer require guzzlehttp/guzzle:*
-require 'vendor/autoload.php';
-
-$headers=array(
-'Content-Type'=>'application/x-www-form-urlencoded',
-'Accept'=>'application/json',
-);
-
-$client= new \GuzzleHttp\Client();
-
 // Define la matriz del cuerpo de la solicitud.
 $request_body =array(
      "client"=>"12345",
@@ -169,19 +158,6 @@ $request_body =array(
      "sms"=>"Este es un mensaje de prueba enviado desde Onurix.com",
      "groups"=>"1,2,3"
     );
-
-try{
-$response=$client->request('POST','https://www.onurix.com/api/v1/sms/send',array(
-'headers'=>$headers,
-'form_params'=>$request_body,
-)
-);
-print_r($response->getBody()->getContents());
-}
-catch(\GuzzleHttp\Exception\BadResponseException $e){
-// Manejar excepciones o errores de API
-print_r($e->getMessage());
-}
 ```
 
 **Ejemplo de `$data` para WhatsApp:**
