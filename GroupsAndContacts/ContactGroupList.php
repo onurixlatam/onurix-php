@@ -10,7 +10,7 @@ $headers=array(
 $client= new \GuzzleHttp\Client();
 
 try{
-    $response=$client->request('GET','https://www.onurix.com/api/v1/group/AQUI_ID_GRUPO/contacts/list?key=AQUI_SU_KEY&client=AQUI_SU_CLIENT',
+    $response=$client->request('GET','https://www.onurix.com/api/v1/group/AQUI_ID_GRUPO/contacts/list?key=AQUI_SU_KEY&client=AQUI_SU_CLIENT&page=AQUI_NUMERO_PAGINA',
     array('headers'=>$headers));
     print_r($response->getBody()->getContents());
     }
