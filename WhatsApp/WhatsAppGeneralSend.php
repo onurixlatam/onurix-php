@@ -12,5 +12,5 @@ $headers = [
 ];
 
 $data = 'AQUI_EL_ARREGLO_CON_LOS_VALORES_PARA_LA_PLANTILLA';
-$response = $client->post("https://www.onurix.com/api/v1/whatsapp/send?key=$key&client=$clientId&template_id=$templateId&phone_sender_id=$phoneSenderId",['body' => json_encode($data)]);
+$response = $client->post("https://www.onurix.com/api/v1/whatsapp/send?key=$key&client=$clientId&template-id=$templateId&phone-sender-id=$phoneSenderId",['body' => json_encode($data)]);
 echo $response->getBody()->getContents();
