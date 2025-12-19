@@ -20,7 +20,7 @@ $body = [
     ]
 ];
 
-$response = $client->post("https://www.onurix.com/api/v1/whatsapp/send/no-template?key=$key&client=$clientId&phone_sender_id=$phoneSenderId", [
+$response = $client->post("https://www.onurix.com/api/v1/whatsapp/send/no-template?key=$key&client=$clientId&phone-sender-id=$phoneSenderId", [
     'headers' => ['Content-Type' => 'application/json'],
     'body' => json_encode($body)
 ]);
