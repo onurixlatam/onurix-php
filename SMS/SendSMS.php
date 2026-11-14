@@ -15,7 +15,10 @@ $request_body =array(
      "key"=>"AQUI_SU_KEY",
      "phone"=>"AQUI_EL_NUMERO_DE_CELULAR",
      "sms"=>"AQUI_EL_SMS_A_ENVIAR",
-     "groups"=>"AQUI_ID_DE_GRUPOS"
+     "groups"=>"AQUI_ID_DE_GRUPOS",
+     // Opcional. 1 (por defecto): mensaje transaccional. 0: mensaje comercial (publicidad, promociones);
+     // los numeros inscritos en el Registro de Numeros Excluidos (RNE) que no aceptan SMS se rechazan con el error 1010.
+     "is-transactional"=>"1"
     );
 
 try{
